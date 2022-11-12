@@ -16,7 +16,8 @@ var S = {
     var nowDate = new Date();
     var timeStr = nowDate.toTimeString().substring(0,5);
 
-    S.UI.simulate('亲爱的|曦曦小朋友|现在是|北京时间|'+(nowDate.getMonth()+1)+'月'+nowDate.getDate()+'日|'+timeStr+'|接下来|是我的告白|#countdown 3|你温柔|体贴|善良|美丽|可爱|等等...|反正|你是我见过|最美好的人|以后的日子|我会像|#icon Pikachu|逗你开心|也会像|#icon Bear|给你安全感|遇上你|是我的三生有幸|七夕快乐呀~|鹏鹏一直都在');
+    // S.UI.simulate('亲爱的|曦曦小朋友|现在是|北京时间|'+(nowDate.getMonth()+1)+'月'+nowDate.getDate()+'日|'+timeStr+'|接下来|是我的告白|#countdown 3|你温柔|体贴|善良|美丽|可爱|等等...|反正|你是我见过|最美好的人|以后的日子|我会像|#icon Pikachu|逗你开心|也会像|#icon Bear|给你安全感|遇上你|是我的三生有幸|七夕快乐呀~|鹏鹏一直都在');
+    S.UI.simulate('亲爱的|同学们|现在是|北京时间|'+(nowDate.getMonth()+1)+'月'+nowDate.getDate()+'日|'+timeStr+'|接下来|是我们组的作业|#countdown 3');
 
     S.Drawing.loop(function () {
       S.Shape.render();
