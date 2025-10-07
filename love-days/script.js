@@ -7,7 +7,7 @@
   const root = document.documentElement;
   const startAttr = root.getAttribute('data-start');
   const START_DATE = startAttr || '2025-10-07';
-  const startTime = new Date(`${START_DATE}T00:00:00+08:00`).getTime();
+  const startTime = new Date(`${START_DATE}T11:22:00+08:00`).getTime();
 
   const elDays = document.getElementById('days');
   const elHours = document.getElementById('hours');
