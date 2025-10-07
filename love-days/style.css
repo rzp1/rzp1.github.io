@@ -44,7 +44,7 @@ main.content { position:relative; z-index:3; max-width: var(--max-width); margin
 main.content::-webkit-scrollbar { width:6px; }
 main.content::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.25); border-radius:3px; }
 
-.header { text-align:center; margin-top:1rem; }
+.header { text-align:center; margin-top:1rem; font-family: "digit"; }
 .header h1 { font-size: clamp(1.4rem, 4.8vw, 2.2rem); font-weight:600; margin:.2rem 0 .6rem; letter-spacing:.05em; }
 .header h2 { 
   font-size: clamp(2.5rem, 16vw, 6rem); 
@@ -53,7 +53,7 @@ main.content::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.25); borde
   line-height:1; 
   background: linear-gradient(120deg,#ffb1c2,#ffd1d1 35%,#ffffff 55%,#ff93a9 80%); 
   -webkit-background-clip:text; 
-  color:transparent; 
+  color: rgba(229, 39, 188, 1); 
   position:relative; 
   /* 更清晰的多层发光 + 轻描边增强对比 */
   text-shadow:
@@ -76,7 +76,7 @@ main.content::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.25); borde
 @keyframes daysPulse { 0%,100%{ filter: drop-shadow(0 4px 18px rgba(255,90,120,0.35)); } 50%{ filter: drop-shadow(0 4px 26px rgba(255,90,120,0.65)); } }
 
 .number { font-variant-numeric: tabular-nums; }
-.unit { font-size: clamp(1rem, 4vw, 1.6rem); margin-left:.3rem; opacity:.9; }
+.unit { font-size: clamp(1rem, 9vw, 1.6rem); margin-left:.3rem; opacity:1; }
 
 .timers { display:flex; justify-content: center; gap: clamp(.6rem,2vw,1.4rem); margin:1.2rem 0 1.6rem; flex-wrap:wrap; }
 .time-box { flex:1 1 28%; min-width:84px; background: var(--glass-bg); border:1px solid var(--glass-border); backdrop-filter: blur(var(--blur)) brightness(1.15); padding:.85rem .5rem .7rem; border-radius:16px; text-align:center; position:relative; overflow:hidden; box-shadow: 0 4px 16px -6px rgba(0,0,0,0.6), 0 2px 6px -2px rgba(0,0,0,0.4); transition: var(--transition); }
