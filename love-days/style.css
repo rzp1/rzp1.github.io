@@ -1,0 +1,122 @@
+/* =====================================================
+   Love Days Page Styles (Dance Enhanced)
+   大鹏子 ❤ 大灵子
+   舞蹈元素: 丝带(流体贝塞尔), 抽象舞者剪影, 节奏呼吸光
+   ===================================================== */
+:root {
+  --bg-gradient: radial-gradient(circle at 30% 30%, #182336 0%, #0b0f17 70%, #05070c 100%);
+  --color-accent: #ff4d6d;
+  --color-accent-glow: #ff85a1;
+  --color-text-primary: #ffffff;
+  --color-text-dim: #9da9c2;
+  --glass-bg: rgba(255,255,255,0.06);
+  --glass-border: rgba(255,255,255,0.15);
+  --blur: 14px;
+  --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  --transition: .35s cubic-bezier(.4,.0,.2,1);
+  --particle-heart-color: #ff5f7a;
+  --particle-code-color: #5fafff;
+  --particle-dance-color: #ffc861;
+  --ribbon-a: #ffb677;
+  --ribbon-b: #ff6f91;
+  --ribbon-c: #ffd58b;
+  --shadow-strong: 0 0 12px -2px rgba(255,77,109,0.6),0 0 32px -6px rgba(255,77,109,0.4);
+  --max-width: 760px;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { height:100%; margin:0; padding:0; }
+body {
+  font-family: var(--font-stack);
+  background: var(--bg-gradient) fixed;
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow:hidden;
+}
+body:before { content:""; position:fixed; inset:0; pointer-events:none; backdrop-filter: brightness(1.05) saturate(1.15); }
+
+#starfield, #particles, #ribbons { position:fixed; inset:0; width:100%; height:100%; display:block; }
+#starfield { z-index:0; }
+#ribbons { z-index:1; mix-blend-mode:screen; opacity:.6; }
+#particles { z-index:2; }
+
+main.content { position:relative; z-index:3; max-width: var(--max-width); margin:0 auto; padding: clamp(1rem,2.5vw,2.4rem) 1.2rem 4rem; height:100%; overflow-y:auto; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.25) transparent; }
+main.content::-webkit-scrollbar { width:6px; }
+main.content::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.25); border-radius:3px; }
+
+.header { text-align:center; margin-top:1rem; }
+.header h1 { font-size: clamp(1.4rem, 4.8vw, 2.2rem); font-weight:600; margin:.2rem 0 .6rem; letter-spacing:.05em; }
+.header h2 { 
+  font-size: clamp(2.5rem, 16vw, 6rem); 
+  margin:.2rem 0; 
+  font-weight:700; 
+  line-height:1; 
+  background: linear-gradient(120deg,#ffb1c2,#ffd1d1 35%,#ffffff 55%,#ff93a9 80%); 
+  -webkit-background-clip:text; 
+  color:transparent; 
+  position:relative; 
+  /* 更清晰的多层发光 + 轻描边增强对比 */
+  text-shadow:
+    0 0 4px rgba(255,147,169,0.75),
+    /* 0 0 12px rgba(255,147,169,0.55), */
+    0 0 28px rgba(255,77,109,0.45);
+    /* 0 4px 18px rgba(0,0,0,0.65); */
+  -webkit-text-stroke:1px rgba(255,255,255,0.18);
+  animation: daysPulse 6s ease-in-out infinite;
+}
+/* 柔和背景光垫，避免在亮星/丝带上丢失可读性 */
+.header h2::before {
+  content:"";
+  position:absolute; inset:-6% -10%;
+  background: radial-gradient(circle at 50% 55%, rgba(255,118,150,0.25), rgba(20,22,34,0) 65%);
+  filter: blur(18px) brightness(1.1);
+  z-index:-1;
+  pointer-events:none;
+}
+@keyframes daysPulse { 0%,100%{ filter: drop-shadow(0 4px 18px rgba(255,90,120,0.35)); } 50%{ filter: drop-shadow(0 4px 26px rgba(255,90,120,0.65)); } }
+
+.number { font-variant-numeric: tabular-nums; }
+.unit { font-size: clamp(1rem, 4vw, 1.6rem); margin-left:.3rem; opacity:.9; }
+
+.timers { display:flex; justify-content: center; gap: clamp(.6rem,2vw,1.4rem); margin:1.2rem 0 1.6rem; flex-wrap:wrap; }
+.time-box { flex:1 1 28%; min-width:84px; background: var(--glass-bg); border:1px solid var(--glass-border); backdrop-filter: blur(var(--blur)) brightness(1.15); padding:.85rem .5rem .7rem; border-radius:16px; text-align:center; position:relative; overflow:hidden; box-shadow: 0 4px 16px -6px rgba(0,0,0,0.6), 0 2px 6px -2px rgba(0,0,0,0.4); transition: var(--transition); }
+.time-box:before { content:""; position:absolute; inset:0; background: linear-gradient(140deg, rgba(255,255,255,0.07), rgba(255,255,255,0)); opacity:.6; pointer-events:none; }
+.time-box .number { display:block; font-size: clamp(1.4rem,6vw,2.4rem); font-weight:600; }
+.time-box .label { display:block; font-size:.8rem; letter-spacing:.15em; text-transform:uppercase; color:var(--color-text-dim); margin-top:.2rem; }
+.time-box:hover { transform:translateY(-4px); box-shadow:0 10px 28px -10px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05); }
+
+.names { text-align:center; margin:1.2rem 0 1.4rem; position:relative; }
+.dancer-wrapper { position:absolute; left:50%; top:-40px; transform:translateX(-50%); pointer-events:none; width:200px; height:260px; opacity:.55; animation: dancerFloat 7.5s ease-in-out infinite; }
+@keyframes dancerFloat { 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,-18px);} }
+.dancer path { stroke-linejoin:round; }
+.pair { font-size: clamp(1rem, 4.2vw, 1.5rem); letter-spacing:.05em; font-weight:500; display:inline-flex; align-items:center; gap:.8rem; background: var(--glass-bg); border:1px solid var(--glass-border); backdrop-filter: blur(var(--blur)) brightness(1.1); padding:.55rem .95rem; border-radius: 999px; position:relative; box-shadow:0 6px 18px -8px rgba(0,0,0,0.65); }
+.name.programmer { color:#69c1ff; }
+.name.dancer { color:#ffd58b; }
+.heart { animation: pulse 2.2s ease-in-out infinite; color:var(--color-accent); text-shadow:0 0 12px rgba(255,77,109,0.65); }
+@keyframes pulse { 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.25);} }
+.since { margin:.7rem 0 0; font-size:.85rem; color:var(--color-text-dim); letter-spacing:.08em; }
+
+.controls { display:flex; justify-content:center; gap:.9rem; margin:1.2rem 0 0; flex-wrap:wrap; }
+.btn { font: inherit; cursor:pointer; background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.25); color:#fff; padding:.65rem 1.1rem; border-radius:14px; letter-spacing:.1em; font-size:.75rem; text-transform:uppercase; position:relative; overflow:hidden; transition: var(--transition); backdrop-filter: blur(8px) brightness(1.2); }
+.btn:before { content:""; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0)); mix-blend-mode:overlay; opacity:.7; }
+.btn, .btn[aria-pressed="true"] { background: linear-gradient(135deg, var(--color-accent) 0%, #ff7b98 100%); box-shadow: var(--shadow-strong); }
+.btn:active { transform:scale(.95); }
+
+@media (max-width:480px){ .time-box { min-width: 92px; } .header h2 { font-size: clamp(2.8rem, 22vw, 5.2rem); } }
+
+@media (prefers-color-scheme: light){ :root { --bg-gradient: radial-gradient(circle at 30% 30%, #f4fbff 0%, #c9d9ff 60%, #8ea3d8 100%); --color-text-primary:#1d2330; --color-text-dim:#566077; } .header h2 { filter:none; } .time-box { box-shadow:0 4px 10px -4px rgba(0,0,0,0.25); } body:before { backdrop-filter: brightness(1) saturate(1.05); } }
+
+#starfield { filter:brightness(.9) contrast(1.05) saturate(1.1); }
+#particles { filter:brightness(1.05) saturate(1.15); }
+
+main.content > * { opacity:0; transform: translateY(18px); animation: fadeInUp .9s forwards; }
+main.content > *:nth-child(2){ animation-delay:.08s; }
+main.content > *:nth-child(3){ animation-delay:.16s; }
+main.content > *:nth-child(4){ animation-delay:.24s; }
+main.content > *:nth-child(5){ animation-delay:.32s; }
+@keyframes fadeInUp { to { opacity:1; transform:translateY(0);} }
+
+/* 舞感关闭时隐藏 dancer-wrapper */
+html[data-dance='off'] .dancer-wrapper { display:none; }
+
+@media (prefers-reduced-motion: reduce){ * { animation:none !important; transition:none !important; } #starfield, #particles, #ribbons { display:none; } body { overflow:auto; } }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-start="2025-10-07" data-dance="on">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="theme-color" content="#0b0f17" />
+  <title>我们已经在一起多少天了</title>
+  <meta name="description" content="大鹏子 和 大灵子 的在一起时光计时页面" />
+  <link rel="preload" as="audio" href="./music.mp3" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 背景层 -->
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <canvas id="ribbons" aria-hidden="true"></canvas>
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <main class="content" role="main" aria-live="polite">
+    <header class="header">
+      <h1>我们已经在一起</h1>
+      <h2><span id="days" class="number">0</span><span class="unit"> 天</span></h2>
+    </header>
+
+    <section class="timers" aria-label="精确时间">
+      <div class="time-box"><span id="hours" class="number">00</span><span class="label">小时</span></div>
+      <div class="time-box"><span id="minutes" class="number">00</span><span class="label">分钟</span></div>
+      <div class="time-box"><span id="seconds" class="number">00</span><span class="label">秒</span></div>
+    </section>
+
+    <section class="names" aria-label="我们">
+      <div class="dancer-wrapper" aria-hidden="true">
+        <!-- 简洁舞者剪影（SVG），不会俗套：线性曲线抽象形体 -->
+        <svg class="dancer" viewBox="0 0 200 400" width="120" height="240" role="img" aria-label="舞者剪影">
+          <defs>
+            <linearGradient id="gradBody" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffd58b"/>
+              <stop offset="100%" stop-color="#ff4d6d"/>
+            </linearGradient>
+            <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge>
+                <feMergeNode in="b"/><feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <!-- 身体：优雅曲线 -->
+          <path d="M100 380 Q120 300 90 220 Q70 150 100 80 Q125 35 110 20" stroke="url(#gradBody)" stroke-width="14" stroke-linecap="round" fill="none" filter="url(#glow)"/>
+          <!-- 手臂与飘带抽象 -->
+          <path d="M100 200 Q160 140 140 90" stroke="#ffc861" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.85"/>
+          <path d="M100 170 Q55 120 80 70" stroke="#ff85a1" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.7"/>
+        </svg>
+      </div>
+      <p class="pair"><span class="name programmer">大鹏子</span>
+        <span class="heart" aria-hidden="true">❤</span>
+        <span class="name dancer">大灵子</span></p>
+      <p class="since">自 <time id="startDate">2025-10-07</time> 开始</p>
+    </section>
+
+    <div class="controls" aria-label="控制">
+      <button id="musicToggle" class="btn" aria-pressed="false">音乐: 开</button>
+      <!-- <button id="effectsToggle" class="btn" aria-pressed="false">特效: 开</button> -->
+      <!-- <button id="danceToggle" class="btn" aria-pressed="true">舞感: 开</button> -->
+    </div>
+  </main>
+
+  <audio id="bgm" src="./music.mp3" preload="auto" loop autoplay></audio>
+  <noscript><p style="color:#fff;text-align:center;padding:1rem">需要开启 JavaScript 才能看到动态效果。</p></noscript>
+  <script src="script.js"></script>
+</body>
+</html>
